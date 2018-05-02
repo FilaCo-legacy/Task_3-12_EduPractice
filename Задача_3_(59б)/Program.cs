@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Учебная_Практика
+namespace Задача_3__59б_
 {
     class Program
     {
