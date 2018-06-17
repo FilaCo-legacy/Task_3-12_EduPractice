@@ -9,6 +9,7 @@ namespace Задача_7__12_
 {
     class Program
     {
+        static List<string> AllDefines = new List<string>();
         static string InputVector(int size, Regex reg)
         {
             string inpVec;
@@ -52,12 +53,51 @@ namespace Задача_7__12_
             return inpNum;
 
         }
+        static bool CheckS(string func)
+        {
+            for (int i = 0; i < func.Length / 2; ++i)
+                if (func[i] != '*' && func[i] == func[func.Length - 1 - i])
+                    return false;
+            return true;
+        }
+        static void GenerateAll(string func, string cur)
+        {
+            if (cur.Length == func.Length)
+            {
+                if (!CheckS(cur))
+                    AllDefines.Add(cur);
+                return;
+            }
+            if (func[cur.Length] == '*')
+            {
+                GenerateAll(func, cur + '0');
+                GenerateAll(func, cur + '1');
+            }
+            else
+                GenerateAll(func, cur + func[cur.Length]);
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Введите кол-во переменных в функции:");
-            int size = ReadNaturalNum();
-            Regex reg = new Regex(@"^\s*[01*]{" + Math.Pow(2,size).ToString() + @"}\s*$");
-            string func = InputVector(size, reg);
+            var size = ReadNaturalNum();
+            Regex reg = new Regex(@"^\s*[01*]{" + Math.Pow(2, size).ToString() + @"}\s*$");
+            Console.WriteLine("Введите вектор значений булевой функции:");
+            var func = InputVector(size, reg);
+            if (!CheckS(func) && !func.Contains('*'))
+            {
+                Console.WriteLine("Функция: {0} полностью определена и несамодвойственна", func);
+                return;
+            }
+            GenerateAll(func, "");
+            if (AllDefines.Count == 0)
+                Console.WriteLine("Функцию: {0} невозможно доопределить до несамодвойственной", func);
+            else
+            {
+                Console.WriteLine("Все возможные доопределения функции: {0} до несамодвойственной:", func);
+                Array.Sort(AllDefines.ToArray());
+                foreach (var curDefine in AllDefines)
+                    Console.WriteLine(curDefine);
+            }
         }
     }
 }
