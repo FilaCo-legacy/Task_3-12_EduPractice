@@ -8,9 +8,9 @@ namespace Задача_9__33_
 {
     class BinPoint<T>
     {
-        public T Data { get; set; }
-        public BinPoint<T> Pref { get; set; }
-        public BinPoint<T> Next { get; set; }
+        private T Data { get; set; }
+        private BinPoint<T> Pref { get; set; }
+        private BinPoint<T> Next { get; set; }
         public BinPoint(T dataValue)
         {
             Data = dataValue;
