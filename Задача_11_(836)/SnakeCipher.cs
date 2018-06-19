@@ -103,7 +103,7 @@ namespace Задача_11__836_
         public int Height { get { return _height; } }
         public SnakeCipher(string message)
         {
-            _width = (int)Math.Sqrt(message.Length) + 1;
+            _width = (int)Math.Ceiling(Math.Sqrt(message.Length));
             _height = Width;
             cipherTable = new char[Height, Width];
             message += new string('~', Width * Height - message.Length);
