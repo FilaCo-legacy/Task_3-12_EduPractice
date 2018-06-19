@@ -59,6 +59,10 @@ namespace Задача_9__33_
             int size = ReadNaturalNum();
             BinPoint<int> taskList = GenerateIntBinPoint(size);
             taskList.Show();
+            Console.WriteLine(@"
+Количество элементов в двунаправленном списке:
+Вычислено рекурсивно: {0}
+Вычислено нерекурсивно: {1}",taskList.CountElems_Recur(), taskList.CountElems_NonRecur());
         }
     }
 }

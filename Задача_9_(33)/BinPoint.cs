@@ -57,5 +57,34 @@ namespace Задача_9__33_
             while (nexts.Count > 0)
                 Console.Write("{0} ", nexts.Pop());
         }
+        public int CountElems_NonRecur()
+        {
+            BinPoint<T> prefBranch = Pref;
+            int num = 1;
+            while (prefBranch != null)
+            {
+                ++num;
+                prefBranch = prefBranch.Pref;
+            }
+            BinPoint<T> nextBranch = Next;
+            while (nextBranch != null)
+            {
+                ++num;
+                nextBranch = nextBranch.Next;
+            }
+            return num;
+        }
+        public int CountElems_Recur(int dir = 0)
+        {
+            int num = 1;
+            if (Pref != null && dir <= 0)
+                num += Pref.CountElems_Recur(-1);
+            if (dir >= 0)
+            {
+                if (Next != null)
+                    num += Next.CountElems_Recur(1);
+            }
+            return num;
+        }
     }
 }
