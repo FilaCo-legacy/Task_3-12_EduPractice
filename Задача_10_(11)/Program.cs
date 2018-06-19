@@ -10,6 +10,9 @@ namespace Задача_10__11_
     {
         static void Main(string[] args)
         {
+            Point taskPoint = new Point(3);
+            taskPoint.Show();
+            taskPoint.NeedToReshuffle();
         }
     }
 }
