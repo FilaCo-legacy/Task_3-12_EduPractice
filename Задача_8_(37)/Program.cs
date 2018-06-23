@@ -9,8 +9,7 @@ namespace Задача_8__37_
     {
         static void Main(string[] args)
         {
-            Graph taskGraph = new Graph(4, 3);
-            taskGraph.FindAllCutPoints();
+            Graph taskGraph = new Graph(4);
             taskGraph.Show();
         }
     }
