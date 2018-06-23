@@ -46,7 +46,7 @@ namespace Задача_8__37_
                 Console.WriteLine("Тест №{0}:\n+------------------------------+", i+1);
                 Graph curG = new Graph();
                 curG.Show();
-                int len = rnd.Next(2, curG.NumNodes + 1);
+                int len = rnd.Next(3, curG.NumNodes + 1);
                 Console.WriteLine("Поиск цикла длины {0}:", len);
                 curG.FindCycle(len);
                 Console.WriteLine("+------------------------------+");

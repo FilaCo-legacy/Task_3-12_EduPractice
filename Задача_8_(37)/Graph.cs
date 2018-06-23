@@ -102,9 +102,9 @@ namespace Задача_8__37_
                 Console.WriteLine("В графе из {0} вершин не может быть простого цикла длины {1}", NumNodes, length);
                 return;
             }
-            else if (length < 2)
+            else if (length < 3)
             {
-                Console.WriteLine("Минимальная длина цикла - 2");
+                Console.WriteLine("Минимальная длина цикла - 3");
                 return;
             }
             for (int i = 0; i < NumNodes; ++i)
