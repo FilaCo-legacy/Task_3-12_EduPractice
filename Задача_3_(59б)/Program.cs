@@ -31,7 +31,7 @@ namespace Задача_3__59б_
             x = Math.Round(x, 1)*10;
             y = Math.Round(y, 1)*10;
             // Максимальные значения x и y в зависимости от входной точки (минимум 1.5)
-            int maxX = (int)Math.Max(15,Math.Max(x,y)), maxY = maxX;
+            int maxX = (int)Math.Max(15,Math.Max(Math.Abs(x),Math.Abs(y))), maxY = maxX;
             // Построчный вывод зоны
             for (int i = maxY; i >= -maxY; i--)
             {
@@ -73,9 +73,9 @@ namespace Задача_3__59б_
             Console.WriteLine("Введите действительное число y");
             y = InputNumber();
             if (x * x + y * y >= 0.25 && x * x + y * y <= 1)
-                Console.WriteLine("Точка с координатами {0} и {1} принадлежит зоне", x, y);
+                Console.WriteLine("Точка с координатами x = {0} и y = {1} принадлежит зоне", x, y);
             else
-                Console.WriteLine("Точка с координатами {0} и {1} не принадлежит зоне", x, y);
+                Console.WriteLine("Точка с координатами x = {0} и y = {1} не принадлежит зоне", x, y);
             OutputZone(x,y);
         }
     }
