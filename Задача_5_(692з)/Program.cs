@@ -8,6 +8,10 @@ namespace Задача_5__692з_
 {
     class Program
     {
+        /// <summary>
+        /// Ввод натурального числа
+        /// </summary>
+        /// <returns></returns>
         static int InputNaturalNumber()
         {
             int inpNum;
@@ -23,16 +27,26 @@ namespace Задача_5__692з_
             } while (!check);
             return inpNum;
         }
+        /// <summary>
+        /// Инициализаци матрицы и заполнение её действительными числами
+        /// </summary>
+        /// <param name="n">Размер матрицы</param>
+        /// <returns></returns>
         static double[,] InitMatrix(int n)
         {
             Random rnd = new Random();
             double[,] matr = new double[n, n];
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
-                    matr[i, j] = rnd.Next(0, 100) * rnd.NextDouble();
+                    matr[i, j] = rnd.Next(-100, 101) * rnd.NextDouble();
             return matr;
         }
-        static double MaxElem(ref double[,] matr)
+        /// <summary>
+        /// Поиск максимального элемента в матрице
+        /// </summary>
+        /// <param name="matr"></param>
+        /// <returns></returns>
+        static double MaxElem(double[,] matr)
         {
             double maxElem = matr[matr.GetLength(0) - 1, matr.GetLength(1)-1];
             for (int i = 0; i < matr.GetLength(0); i++)
@@ -41,7 +55,12 @@ namespace Задача_5__692з_
                         maxElem = matr[i, j];
             return maxElem;
         }
-        static void OutputMatr(ref double[,] matr, double maxElem)
+        /// <summary>
+        /// Вывод матрицы с подсвеченным максимальным элементом и зоной поиска
+        /// </summary>
+        /// <param name="matr"></param>
+        /// <param name="maxElem"></param>
+        static void OutputMatr(double[,] matr, double maxElem)
         {
             for (int i = 0; i < matr.GetLength(0); i++)
             {
@@ -52,7 +71,7 @@ namespace Задача_5__692з_
                     else if (i <= j && j >= matr.GetLength(1) - 1 - i)
                         Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("{0:F3}\t", matr[i, j]);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 Console.WriteLine();
             }
@@ -60,13 +79,13 @@ namespace Задача_5__692з_
         static void Main(string[] args)
         {
             int size;
-            Console.WriteLine("Введите порядок матрицы");
+            Console.WriteLine("Введите размер квадратной матрицы");
             size = InputNaturalNumber();
             double[,] matr = InitMatrix(size);
-            double maxElem = MaxElem(ref matr);
+            double maxElem = MaxElem(matr);
             Console.WriteLine("Наибольшее значение в заданной зоне матрицы: {0:F3}", maxElem);
             Console.WriteLine("Матрица с выделенной зоной:");
-            OutputMatr(ref matr, maxElem);
+            OutputMatr(matr, maxElem);
         }
     }
 }
