@@ -46,7 +46,7 @@ namespace Задача_4__119е_
         static void Main(string[] args)
         {
             Console.WriteLine("Задайте точность вычислений (eps > 0):\nP.S. N-ый член суммы будет меньше, чем eps");
-            double eps = InputNumber();
+            double eps = InputPosNumber();
             double sum = CountSum(eps, 0);
             Console.WriteLine("Точность: {0}\nСумма:{1}", eps,sum);
         }
