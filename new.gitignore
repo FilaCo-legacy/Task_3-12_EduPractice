@@ -1,3 +1,5 @@
 *.pdb
 *.exe
 *.txt
+*.csproj
+*.cache
